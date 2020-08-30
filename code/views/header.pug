@@ -1,0 +1,54 @@
+style(type="text/css").
+    .dropdown-item:hover {
+        background-color: #205a50;
+    }
+    .logo-link {
+        width: 200px;
+        height: 60px;
+    }
+    .logo-link img {
+        width: 100%;
+        height: 100%;
+    }
+    .nav-menu {
+        display:flex;
+        justify-content:flex-end;
+        align-items: center;
+    }
+    .hot-tag:after {
+        position: relative; 
+        top: -20px; 
+        font-size: 0.2em;
+        content: attr(hotTag);
+        color: #fff;
+        background-color: #dc3545;
+        padding: .25em .4em;
+        border-radius: .25rem;
+    }
+nav.navbar.navbar-expand-lg.navbar-light.bg-light(style="background-color:#fff !important;")
+    a.navbar-brand.logo-link(href='/')
+        img(src="/images/logo.png")
+    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+    .collapse.navbar-collapse.nav-menu
+        .input-group(style="width:40%;")
+            input#top-search-box.form-control(type="text" style="font-size:1.5em;border:0;")
+            .input-group-append
+                span.input-group-text.icon.iconfont.icon-search1(style="font-size:1.5em;font-weight:bold;background-color:#fff;border:0;cursor:pointer;" onclick="searchClick()")
+        .navbar-nav(style="display:flex;align-items: center;")
+            if username
+                a.nav-link.nav-item(href="#")
+                    span.icon.iconfont.icon-message.hot-tag(style="font-size:1.8em;" hotTag="6")
+                a.nav-link.nav-item(href="#")
+                    span.icon.iconfont.icon-message_fill.hot-tag(style="font-size:1.8em;" hotTag="2")
+            else
+                a.nav-link.nav-item.link(href="/login.html") Login
+                a.nav-link.nav-item.link(href="/register.html") Signup
+            a.nav-link.nav-item.btn.lbtn(href="#" style="margin-left:20px;font-size:0.8em;") 
+                span.icon.iconfont.icon-plus(style="font-size:0.8em;") 
+                span Create Routes
+script(type="text/javascript").
+    function searchClick() {
+        let tsb = document.getElementById("top-search-box");
+        tsb.focus();
+    }

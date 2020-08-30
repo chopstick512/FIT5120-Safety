@@ -1,0 +1,89 @@
+extends layout
+
+block styleblock
+  style(type="text/css").
+    .intro-font {
+      font-size: 1em;
+    }
+    .out-container {
+      display: flex;
+    }
+    .search-container {
+      display: flex;
+      box-shadow: 10px 10px 5px #888888;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      padding: 10px;
+      background-color: hsla(0,0%,100%,.98);
+    }
+    .search-btn {
+      background-color: #06a583;
+      box-shadow: 10px 10px 5px #888888;
+      color: #fff;
+      padding: 10px;
+      display:flex;
+      align-items: center;
+      opacity: 0.9;
+      border-top-right-radius: 10px !important;
+      border-bottom-right-radius: 10px;
+    }
+    .search-btn:hover {
+      opacity: 1;
+      transition: 0.9 ease-in-out;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .search-container .search-box {
+      background: transparent;
+      border: 0 !important;
+      outline: 0 !important;
+    }
+    .search-box:active,.search-box:focus,.search-box:hover {
+      outline: 0 !important;
+      border: 0 !important;
+    }
+    .search-box::-webkit-input-placeholder {
+      font-size: 12px;
+    }
+    #btnGroupDrop1 {
+      border: none;
+      outline: none;
+      text-decoration: none;
+      color: #6c757d!important;
+      font-size: 12px;
+    }
+    #allmap {
+      width: 100%;
+      height: 500px;
+    }
+block content
+  include header.pug
+  .container-fluid.pmargin-vertical-20(style="width:90%;")
+    .card.scard
+      .card-body
+        .content
+          .row
+            .col-md-6
+              .jumbotron.white-bg-color
+                h2 Find Trending Routes
+                p.text-muted.intro-font Find safe and popular routes among older Australians. Tell us where you'll be, we'll help you search.
+                .out-container
+                  .search-container
+                    .s-item(style="display:flex;align-items: center;")
+                      span.icon.iconfont.icon-location(style="font-size:1.2em;color:#6c757d;")
+                    .s-item(style="border-right: 1px solid #888888;")
+                      input.form-control.search-box(type="text" style="outline:none;" placeholder="Where do you want look into?")
+                    .s-item(style="display:flex;align-items: center;")
+                      .btn-group(role="group")
+                        button#btnGroupDrop1.btn.btn-link.dropdown-toggle(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Exclusive for bike
+                        .dropdown-menu(aria-labelledby="btnGroupDrop1")
+                          a.dropdown-item Dropdown link
+                  a.search-btn.white-color(href="/search.html") Search
+                    span.icon.iconfont.icon-cc-arrow-right(style="font-weight:bold;")
+            .col-md-6
+              img.img-fluid(src="/images/main_map.PNG")
+block scriptblock
+  script(type="text/javascript").
+

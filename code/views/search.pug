@@ -1,0 +1,124 @@
+extends layout
+
+block styleblock
+    link(rel="stylesheet" href="/css/slider.css")
+    style(type="text/css").
+        .route-card {
+            margin-right: 7px;
+            margin-bottom: 20px;
+            border: 0 !important;
+        }
+        .route-subtitle {
+            font-size: 1em;
+            margin-left: .25em;
+        }
+        .route-subtitle-icon {
+            font-size: 0.8em;
+        }
+        .search-bar-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .search-link {
+            font-size: 1em;
+        }
+block content
+  include header2.pug
+  .container-fluid.pmargin-vertical-20(style="width:85%;")
+    //.search-bar-container
+        span.icon.iconfont.icon-Distance-.mr-2.bg-transparent.text-muted(style="font-size:1.5em;" title="Distance")
+        .tick-slider
+            .tick-slider-value-container
+                #weightLabelMin.tick-slider-label 0km
+                #weightLabelMax.tick-slider-label 50km
+                #weightValue.tick-slider-value
+            .tick-slider-background
+            #weightProgress.tick-slider-progress
+            #weightTicks.tick-slider-tick-container
+            input#weightSlider.tick-slider-input(type='range', min='0', max='50', step='1', value='9', data-tick-step='1', data-tick-id='weightTicks', data-value-id='weightValue', data-progress-id='weightProgress', data-handle-size='18', data-min-label-id='weightLabelMin', data-max-label-id='weightLabelMax')
+    .card.scard
+      .card-body
+        .content
+          .search-bar-container
+            .input-group.bg-white.shadow.p-2.mr-2.rounded
+                .input-group-prepend
+                    span.icon.iconfont.icon-location.input-group-text.border-0.bg-white.text-muted
+                input.form-control.border-0(type="text" placeholder="City of Melbourne")
+            .input-group.bg-white.shadow.p-2.mr-2.rounded
+                .input-group-prepend
+                    span.icon.iconfont.icon-user.input-group-text.border-0.bg-white.text-muted
+                select#direction.form-control.border-0
+                    if !direction
+                        option(value="") Direction
+                        option(value="Both Directions") Both Directions
+                        option(value="Underection") Underection
+                    else if direction === "Both Directions"
+                        option(value="") Direction
+                        option(value="Both Directions" selected) Both Directions
+                        option(value="Underection") Underection
+                    else if direction === "Underection"
+                        option(value="") Direction
+                        option(value="Both Directions") Both Directions
+                        option(value="Underection" selected) Underection
+            .input-group.bg-white.shadow.p-2.mr-2.rounded
+                .input-group-prepend
+                    span.icon.iconfont.icon-user.input-group-text.border-0.bg-white.text-muted
+                select#type.form-control.border-0
+                    if !type
+                        option(value="") Type
+                        option(value="Corridor") Corridor
+                        option(value="Off-Road Bike Route") Off-Road Bike Route
+                    else if type === "Corridor"
+                        option(value="") Type
+                        option(value="Corridor" selected) Corridor
+                        option(value="Off-Road Bike Route") Off-Road Bike Route
+                    else if type === "Off-Road Bike Route"
+                        option(value="") Type
+                        option(value="Corridor") Corridor
+                        option(value="Off-Road Bike Route" selected) Off-Road Bike Route
+                        
+
+            #search-btn.btn.lbtn(href="#") 
+                span Search
+                span.icon.iconfont.icon-cc-arrow-right.font-bold 
+          .row
+            .col-md-6
+                .row
+                    .col-md-8
+                        p Found #{routesPath.length} Routes Near 
+                            a.green-color(href="#") City of Melbourne
+                    .col-md-4.text-right
+                        span.icon.iconfont.icon--shousuo.font-bold.cursor-pointer.text-muted
+                .route-container
+                    for path in routesPath
+                        .card.route-card.shadow
+                            .card-body
+                                .row
+                                    .col-md-6
+                                        h6.card-title
+                                            span.icon.iconfont.icon-location.text-danger
+                                                a.link.text-muted.search-link(href="/search/detail.html/"+path.id) #{path.title} No.#{path.safety_rank}
+                                        p.card-text #{path.title}
+                                    .col-md-6
+                                        p.card-text
+                                            span.icon.iconfont.icon-leibie.text-muted.route-subtitle-icon
+                                                span.text-muted.route-subtitle=path.direction
+                                        p.card-text
+                                            span.icon.iconfont.icon-leibie.text-muted.route-subtitle-icon
+                                                span.text-muted.route-subtitle=path.type
+                                        p.card-text
+                                            span.icon.iconfont.icon-leibie.text-muted.route-subtitle-icon
+                                                span.text-muted.route-subtitle Distance: #{path.distance}
+            .col-md-6
+              img.img-fluid(src="/images/main_map.PNG")
+block scriptblock
+  script(type="text/javascript" src="/js/slider.js")
+  script(type="text/javascript").
+    $(function() {
+        $("#search-btn").on("click", function() {
+            let direction = $("#direction").val();
+            let type = $("#type").val();
+            window.location.href = `/route/filter.html?direction=${direction}&type=${type}`;
+        });
+    });

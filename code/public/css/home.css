@@ -1,0 +1,43 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: url("../images/bg.jpg") no-repeat;
+  background-size: 100% 100%;
+}
+
+.sc-nav {
+  display: flex;
+  justify-content: flex-end;
+}
+.sc-nav .sc-nav-item:hover {
+  color: #ffc107 !important;
+}
+
+.sc-title {
+  font-size: 4em;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.desc {
+  font-size: 2.5em;
+  width: 60%;
+  margin: 20px auto;
+}
+.find-more {
+  background-image: -webkit-linear-gradient(
+    bottom,
+    #f8d15d,
+    rgb(255, 252, 252)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.6em;
+  width: 60%;
+  margin: 0 auto;
+}

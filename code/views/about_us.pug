@@ -1,0 +1,68 @@
+extends layout
+
+block styleblock
+  style(type="text/css").
+    .intro-font {
+      font-size: 1em;
+    }
+    .out-container {
+      display: flex;
+    }
+    .search-container {
+      display: flex;
+      box-shadow: 10px 10px 5px #888888;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      padding: 10px;
+      background-color: hsla(0,0%,100%,.98);
+    }
+    .search-btn {
+      background-color: #06a583;
+      box-shadow: 10px 10px 5px #888888;
+      color: #fff;
+      padding: 10px;
+      display:flex;
+      align-items: center;
+      opacity: 0.9;
+      border-top-right-radius: 10px !important;
+      border-bottom-right-radius: 10px;
+    }
+    .search-btn:hover {
+      opacity: 1;
+      transition: 0.9 ease-in-out;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .search-container .search-box {
+      background: transparent;
+      border: 0 !important;
+      outline: 0 !important;
+    }
+    .search-box:active,.search-box:focus,.search-box:hover {
+      outline: 0 !important;
+      border: 0 !important;
+    }
+    .search-box::-webkit-input-placeholder {
+      font-size: 12px;
+    }
+    #btnGroupDrop1 {
+      border: none;
+      outline: none;
+      text-decoration: none;
+      color: #6c757d!important;
+      font-size: 12px;
+    }
+    
+block content
+  include header.pug
+  .container-fluid.pmargin-vertical-20(style="width:90%;")
+    .card.scard
+      .card-body
+        .content
+          img.img-fluid(src="/images/team_part2.png")
+          img.img-fluid(src="/images/team_part1.png")
+block scriptblock
+  script(type="text/javascript").
+

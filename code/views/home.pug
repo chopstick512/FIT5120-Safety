@@ -1,0 +1,20 @@
+extends layout
+
+block styleblock
+    link(rel="stylesheet", href="/css/home.css")
+
+block content
+    .container-fluid
+        .nav.pt-5.sc-nav
+            .nav-item
+                a.nav-link.white-color.sc-nav-item(href="/") Home
+            .nav-item
+                a.nav-link.white-color.sc-nav-item(href="/discover.html") Discover
+            .nav-item
+                a.nav-link.white-color.sc-nav-item(href="/about_us.html") About Us
+            .nav-item
+                a.nav-link.white-color.sc-nav-item(href="#") Login
+        .jumbotron.bg-transparent
+            .text-warning.font-weight-bolder.sc-title SAFE CYCLE
+            .lead.white-color.font-weight-bold.desc Towards a safe cycling experience for old Australians
+            .lead.white-color.font-weight-bold.find-more Find out more
